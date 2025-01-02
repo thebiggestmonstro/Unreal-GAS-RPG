@@ -40,21 +40,22 @@ void AAuraPlayer::PossessedBy(AController* InController)
 {
 	Super::PossessedBy(InController);
 
-	SetAbilityActorInfo();
+	InitAbilityActorInfo();
 }
 
 void AAuraPlayer::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
 
-	SetAbilityActorInfo();
+	InitAbilityActorInfo();
 }
 
-void AAuraPlayer::SetAbilityActorInfo()
+void AAuraPlayer::InitAbilityActorInfo()
 {
 	// 서버단계에서 ASC의 OwnerActor와 AvatarActor를 초기화 + BaseCharacter에서 상속된 멤버들을 PlayerState 값으로 초기화
 	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(GetPlayerState());
 	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
+	Cast<UAuraAbilitySystemComponent>(AuraPlayerState->GetAbilitySystemComponent())->AbilityActorInfoSet();
 	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 	AttributeSet = AuraPlayerState->GetAttributeSet();
 

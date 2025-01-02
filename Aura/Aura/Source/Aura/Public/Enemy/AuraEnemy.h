@@ -27,4 +27,9 @@ protected:
 	virtual void HighlightActor() override;
 
 	virtual void UnHighlightActor() override;
+
+	/*
+	* AuraCharacterBase Section
+	*/
+	virtual void InitAbilityActorInfo() override;
 };

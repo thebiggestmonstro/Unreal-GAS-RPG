@@ -35,7 +35,7 @@ private:
 
 private:
 	/*
-	* member function
+	* AuraCharacterBase Section
 	*/
-	void SetAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
 };
